@@ -4,7 +4,7 @@ import ShoppingList from "./components/CardShoppingList";
 import axios from "axios";
 
 const client = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: "https://oliveira-hub.doxacode.app.br",
 });
 
 export default function Home() {
