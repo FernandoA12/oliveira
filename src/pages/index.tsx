@@ -3,6 +3,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import OrderItem from "./components/OrderItem";
 import axios from "axios";
 import { Order } from "@/domain/entities/Order";
+import fs from "fs";
 
 const client = axios.create({
   baseURL:
@@ -37,7 +38,27 @@ export default function Home() {
     },
   });
 
-  const onPrint = (order: Order) => {};
+  const onPrint = async (order: Order) => {
+    const { data: cupom } = await axios.post("/api/createCupom", order);
+
+    const iframe = document.createElement("iframe");
+    iframe.style.visibility = "hidden";
+    iframe.style.position = "fixed";
+    iframe.style.right = "0";
+    iframe.style.bottom = "0";
+
+    document.body.appendChild(iframe);
+
+    iframe.contentDocument.open();
+    iframe.contentDocument.write(cupom);
+    iframe.contentDocument.close();
+
+    iframe.contentWindow.focus();
+    await new Promise((r) => setTimeout(r, 100));
+    iframe.contentWindow.print();
+
+    document.body.removeChild(iframe);
+  };
 
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[#F8F6F5]">
