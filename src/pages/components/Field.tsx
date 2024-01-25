@@ -3,7 +3,7 @@ interface FieldProps {
   value: string;
 }
 
-export function Field(props: FieldProps) {
+export default function Field(props: FieldProps) {
   return (
     <div className="text-[#967466] flex flex-col !text-sm gap-1 overflow-hidden">
       <b>{props.title}</b>

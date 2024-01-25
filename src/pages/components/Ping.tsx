@@ -4,7 +4,7 @@ interface PingProps {
   status: Order.Status;
 }
 
-export function Ping(props: PingProps) {
+export default function Ping(props: PingProps) {
   return (
     <div>
       <div
