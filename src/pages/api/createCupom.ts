@@ -8,7 +8,7 @@ export default function handler(
   res: NextApiResponse<string>
 ) {
   const templateContent = fs.readFileSync(
-    path.resolve("../../public/template.hbs"),
+    path.resolve("./template.hbs"),
     "utf-8"
   );
   const template = handlebars.compile(templateContent);
