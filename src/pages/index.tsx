@@ -3,12 +3,11 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import OrderItem from "./components/OrderItem";
 import axios from "axios";
 import { Order } from "@/domain/entities/Order";
-import fs from "fs";
 
 const client = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "https://oliveira-hub.doxacode.app.br"
+      ? "https://oliveira-bot.doxacode.app.br"
       : "http://localhost:3333",
 });
 
