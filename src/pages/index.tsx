@@ -8,7 +8,7 @@ const client = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
       ? "https://oliveira-bot.doxacode.app.br"
-      : "http://localhost:3333",
+      : "https://oliveira-bot.doxacode.app.br",
 });
 
 export default function Home() {
@@ -18,7 +18,7 @@ export default function Home() {
     queryKey: ["get-orders"],
     queryFn: async () => {
       const response = await client.get("/orders");
-      return response.data;
+      return response.data.map((order) => new Order(order));
     },
     refetchInterval: 2000,
   });
